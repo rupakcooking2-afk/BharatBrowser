@@ -1,0 +1,137 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+# ==== AI Provider ====
+
+- name: bharat.ai.provider
+  value: "gemini"
+
+- name: bharat.ai.gemini.key
+  value: ""
+
+- name: bharat.ai.temperature
+  value: 0.7
+
+- name: bharat.ai.maxTokens
+  value: 2048
+
+# ==== AI Sidebar ====
+
+- name: bharat.ai.sidebar.open
+  value: false
+
+- name: bharat.ai.sidebar.width
+  value: 300
+
+- name: bharat.ai.sidebar.last-tab
+  value: "chat"
+
+# ==== Voice Assistant ====
+
+- name: bharat.voice.enabled
+  value: true
+
+- name: bharat.voice.wakeword
+  value: false
+
+- name: bharat.voice.tts.enabled
+  value: true
+
+- name: bharat.voice.speed
+  value: 1.0
+
+- name: bharat.voice.pitch
+  value: 1.0
+
+- name: bharat.voice.volume
+  value: 1.0
+
+- name: bharat.voice.language
+  value: "en-US"
+
+- name: bharat.voice.autoExecute
+  value: false
+
+# ==== Bharat AI Core (Agent) ====
+
+- name: bharat.ai.requireApproval
+  value: true
+
+- name: bharat.ai.agent.enabled
+  value: true
+
+- name: bharat.ai.actionLog
+  hidden: true
+  value: "[]"
+
+- name: bharat.voice.sessions
+  hidden: true
+  value: "[]"
+
+# ==== Memory ====
+
+- name: bharat.memory.enabled
+  value: true
+
+# ==== Research ====
+
+- name: bharat.research.enabled
+  value: true
+
+- name: bharat.research.history
+  hidden: true
+  value: "[]"
+
+# ==== Notes ====
+
+- name: bharat.notes.autosave
+  value: true
+
+# ==== Chat ====
+
+- name: bharat.chat.history.enabled
+  value: true
+
+- name: bharat.chat.sessions
+  hidden: true
+  value: "[]"
+
+# ==== Search ====
+
+- name: bharat.search.history
+  hidden: true
+  value: "[]"
+
+# ==== Page Intelligence ====
+
+- name: bharat.page.intelligence.enabled
+  value: true
+
+# ==== YouTube Intelligence ====
+
+- name: bharat.youtube.intelligence.enabled
+  value: true
+
+- name: bharat.youtube.history
+  hidden: true
+  value: "[]"
+
+# ==== Agent Task Manager ====
+
+- name: bharat.agent.maxTasks
+  value: 10
+
+- name: bharat.agent.autoSaveMemory
+  value: true
+
+- name: bharat.agent.retryLimit
+  value: 2
+
+# ==== Workspace ====
+
+- name: bharat.workspace.active
+  value: "default-personal"
+
+- name: bharat.workspace.migrated
+  value: false

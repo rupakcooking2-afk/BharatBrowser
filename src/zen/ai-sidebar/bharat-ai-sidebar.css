@@ -1,0 +1,1168 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#bharat-ai-sidebar {
+  background: var(--zen-main-browser-background);
+  border-left: 1px solid var(--zen-colors-border);
+  min-width: 200px;
+  width: var(--bharat-ai-sidebar-width, 300px);
+  max-width: 600px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.1s linear;
+  z-index: 10;
+}
+
+#bharat-ai-sidebar[hidden="true"] {
+  display: none;
+}
+
+#bharat-ai-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--zen-colors-border);
+}
+
+#bharat-ai-title {
+  font-weight: 600;
+  font-size: 1.2em;
+  color: var(--zen-colors-primary);
+}
+
+#bharat-ai-nav {
+  display: flex;
+  overflow-x: auto;
+  padding: 8px;
+  gap: 4px;
+  border-bottom: 1px solid var(--zen-colors-border);
+  scrollbar-width: none;
+}
+
+#bharat-ai-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.bharat-ai-nav-item {
+  padding: 6px 12px !important;
+  border-radius: 8px !important;
+  font-size: 0.9em !important;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.bharat-ai-nav-item:hover {
+  background: var(--zen-colors-tertiary) !important;
+}
+
+.bharat-ai-nav-item[selected="true"] {
+  background: var(--zen-colors-secondary) !important;
+  color: var(--zen-colors-primary) !important;
+  font-weight: 600;
+}
+
+.bharat-ai-panel {
+  padding: 24px;
+  color: var(--zen-colors-primary);
+  text-align: center;
+}
+
+.bharat-ai-coming-soon-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.bharat-ai-coming-soon-desc {
+  font-size: 0.95em;
+  opacity: 0.6;
+  max-width: 250px;
+}
+
+/* Search specific styles */
+#bharat-search-container {
+  gap: 16px;
+  padding: 0;
+}
+
+#bharat-search-input-box, #bharat-search-followup-box {
+  background: var(--zen-colors-tertiary);
+  border-radius: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--zen-colors-border);
+}
+
+#bharat-search-input, #bharat-search-followup-input {
+  background: transparent !important;
+  border: none !important;
+  color: var(--zen-colors-primary);
+  font-size: 1.1em;
+  outline: none !important;
+}
+
+.bharat-search-section-title {
+  font-weight: 700;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  opacity: 0.5;
+}
+
+.bharat-search-scrollable-x {
+  display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.bharat-citation-card {
+  min-width: 140px;
+  max-width: 140px;
+  background: var(--zen-colors-tertiary);
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--zen-colors-border);
+  cursor: pointer;
+}
+
+.bharat-citation-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.bharat-citation-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.bharat-citation-title {
+  font-size: 0.8em;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bharat-citation-url {
+  font-size: 0.7em;
+  opacity: 0.5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bharat-search-text-content {
+  font-size: 1.05em;
+  line-height: 1.6;
+  color: var(--zen-colors-primary);
+}
+
+.bharat-related-item {
+  background: transparent;
+  border: 1px solid var(--zen-colors-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-align: left;
+  margin-bottom: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.bharat-search-related-item:hover {
+  background: var(--zen-colors-tertiary);
+}
+
+#bharat-ai-content {
+  padding: 0;
+}
+
+#bharat-ai-page-toolbar {
+  padding: 8px 12px;
+  background: var(--zen-colors-tertiary);
+  border-bottom: 1px solid var(--zen-colors-border);
+  gap: 8px;
+  backdrop-filter: blur(10px);
+}
+
+#bharat-ai-video-toolbar {
+  padding: 8px 12px;
+  background: var(--zen-colors-secondary);
+  border-bottom: 1px solid var(--zen-colors-border);
+  gap: 8px;
+}
+
+.bharat-ai-tool-btn {
+  padding: 6px 12px !important;
+  border-radius: 20px !important;
+  background: var(--zen-main-browser-background) !important;
+  border: 1px solid var(--zen-colors-border) !important;
+  font-size: 0.85em !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bharat-ai-tool-btn:hover {
+  background: var(--zen-colors-secondary) !important;
+  transform: translateY(-1px);
+}
+
+.bharat-ai-tool-btn:active {
+  transform: translateY(0);
+}
+
+/* Chat specific styles */
+#bharat-chat-layout {
+  gap: 0;
+}
+
+#bharat-chat-sessions {
+  width: 180px;
+  border-right: 1px solid var(--zen-colors-border);
+  background: var(--zen-colors-tertiary);
+  padding: 8px;
+}
+
+#bharat-chat-messages {
+  padding: 16px;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bharat-chat-bubble {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 0.95em;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.bharat-chat-bubble[role="user"] {
+  align-self: flex-end;
+  background: var(--zen-colors-primary);
+  color: var(--zen-main-browser-background);
+  border-bottom-right-radius: 2px;
+}
+
+/* Voice specific styles */
+#bharat-voice-container {
+  padding: 20px;
+  gap: 20px;
+}
+
+#bharat-voice-title {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: var(--zen-colors-primary);
+}
+
+#bharat-voice-header {
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--zen-colors-border);
+}
+
+#bharat-voice-settings-btn {
+  background: url("chrome://browser/skin/zen-icons/settings.svg") center/contain no-repeat;
+}
+
+#bharat-voice-settings-panel {
+  width: 100%;
+  background: var(--zen-colors-tertiary);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 10px;
+  gap: 12px;
+}
+
+.voice-slider-container {
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.voice-slider-container html|input[type="range"] {
+  width: 100%;
+  accent-color: var(--zen-colors-primary);
+}
+
+#bharat-voice-orb-container {
+  position: relative;
+  height: 200px;
+}
+
+#bharat-voice-orb {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007AFF, #00C6FF);
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  pack: center;
+  box-shadow: 0 0 20px rgba(0, 122, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+
+#bharat-voice-orb-inner {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  pack: center;
+}
+
+#bharat-voice-orb-icon {
+  width: 32px;
+  height: 32px;
+  background: url("chrome://browser/skin/zen-icons/microphone.svg") center/contain no-repeat;
+  filter: brightness(0) invert(1);
+}
+
+.orb-wave {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(0, 122, 255, 0.3);
+  z-index: 1;
+  opacity: 0;
+}
+
+/* Orb States */
+#bharat-voice-container[status="listening"] #bharat-voice-orb {
+  background: linear-gradient(135deg, #FF3B30, #FF9500);
+  box-shadow: 0 0 30px rgba(255, 59, 48, 0.5);
+  transform: scale(1.1);
+}
+
+#bharat-voice-container[status="listening"] .orb-wave {
+  animation: orb-pulse 2s infinite;
+}
+
+#bharat-voice-container[status="listening"] .orb-wave:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+#bharat-voice-container[status="listening"] .orb-wave:nth-child(3) {
+  animation-delay: 1.2s;
+}
+
+#bharat-voice-container[status="processing"] #bharat-voice-orb {
+  background: linear-gradient(135deg, #5856D6, #AF52DE);
+  animation: orb-rotate 2s linear infinite;
+}
+
+#bharat-voice-container[status="speaking"] #bharat-voice-orb {
+  background: linear-gradient(135deg, #4CD964, #5AC8FA);
+  animation: orb-bounce 1s ease-in-out infinite;
+}
+
+#bharat-voice-container[status="error"] #bharat-voice-orb {
+  background: #FF3B30;
+  animation: orb-shake 0.5s linear;
+}
+
+@keyframes orb-pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes orb-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes orb-bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes orb-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+#bharat-voice-status-box {
+  background: var(--zen-colors-tertiary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  gap: 8px;
+}
+
+#bharat-voice-status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+#bharat-voice-container[status="listening"] #bharat-voice-status-indicator { background: #FF3B30; }
+#bharat-voice-container[status="processing"] #bharat-voice-status-indicator { background: #5856D6; }
+#bharat-voice-container[status="speaking"] #bharat-voice-status-indicator { background: #4CD964; }
+
+#bharat-voice-info {
+  width: 100%;
+  gap: 12px;
+  text-align: left;
+}
+
+.bharat-voice-info-header {
+  font-size: 0.8em;
+  font-weight: 700;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.5px;
+}
+
+#bharat-voice-transcript-area {
+  background: var(--zen-colors-tertiary);
+  padding: 12px;
+  border-radius: 12px;
+  min-height: 60px;
+  max-height: 120px;
+  overflow-y: auto;
+  border: 1px solid var(--zen-colors-border);
+}
+
+#bharat-voice-transcript-text {
+  font-size: 1.1em;
+  line-height: 1.4;
+  color: var(--zen-colors-primary);
+}
+
+#bharat-voice-last-command {
+  background: var(--zen-colors-secondary);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 0.9em;
+  border-left: 3px solid var(--zen-colors-primary);
+}
+
+#bharat-voice-command-text {
+  color: var(--zen-colors-primary);
+  opacity: 0.8;
+}
+
+.bharat-chat-bubble[role="assistant"] {
+  align-self: flex-start;
+  background: var(--zen-colors-tertiary);
+  color: var(--zen-colors-primary);
+  border-bottom-left-radius: 2px;
+  border: 1px solid var(--zen-colors-border);
+}
+
+#bharat-chat-input-container {
+  padding: 12px;
+  border-top: 1px solid var(--zen-colors-border);
+}
+
+#bharat-chat-input-box {
+  background: var(--zen-colors-tertiary);
+  border-radius: 12px;
+  padding: 4px 8px;
+  border: 1px solid var(--zen-colors-border);
+}
+
+#bharat-chat-input {
+  background: transparent !important;
+  border: none !important;
+  color: var(--zen-colors-primary);
+  resize: none;
+  font-family: inherit;
+  padding: 8px;
+  max-height: 120px;
+}
+
+.bharat-scrollable {
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--zen-colors-primary);
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: typing 1.4s infinite both;
+  opacity: 0.4;
+}
+
+@keyframes typing {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+/* Notes specific styles */
+#bharat-notes-layout {
+  gap: 0;
+}
+
+#bharat-notes-sidebar {
+  border-right: 1px solid var(--zen-colors-border);
+  background: var(--zen-colors-tertiary);
+}
+
+#bharat-notes-actions {
+  padding: 8px;
+  border-bottom: 1px solid var(--zen-colors-border);
+}
+
+#bharat-notes-list {
+  padding: 4px;
+}
+
+.bharat-note-card {
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 2px;
+  cursor: pointer;
+}
+
+.bharat-note-card:hover {
+  background: var(--zen-colors-secondary);
+}
+
+.bharat-note-card[selected="true"] {
+  background: var(--zen-colors-primary);
+  color: var(--zen-main-browser-background);
+}
+
+#bharat-notes-editor-container {
+  display: flex;
+  flex-direction: column;
+  background: var(--zen-main-browser-background);
+}
+
+#bharat-notes-editor-header {
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--zen-colors-border);
+  gap: 12px;
+}
+
+#bharat-note-title-input {
+  font-weight: 700;
+  font-size: 1.2em;
+  background: transparent !important;
+  border: none !important;
+  color: var(--zen-colors-primary);
+}
+
+#bharat-note-editor {
+  padding: 16px;
+  font-size: 1.05em;
+  line-height: 1.6;
+  background: transparent !important;
+  border: none !important;
+  color: var(--zen-colors-primary);
+  resize: none;
+  font-family: var(--zen-font-family, inherit);
+}
+
+/* Memory specific styles */
+#bharat-memory-header {
+  padding: 12px;
+  border-bottom: 1px solid var(--zen-colors-border);
+}
+
+#bharat-memory-search {
+  background: var(--zen-colors-tertiary) !important;
+  border-radius: 20px !important;
+  padding: 8px 16px !important;
+  border: 1px solid var(--zen-colors-border) !important;
+  color: var(--zen-colors-primary);
+}
+
+.bharat-memory-card {
+  padding: 12px;
+  margin: 8px;
+  background: var(--zen-colors-tertiary);
+  border-radius: 12px;
+  border: 1px solid var(--zen-colors-border);
+}
+
+.bharat-memory-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.bharat-memory-title {
+  font-weight: 700;
+  font-size: 0.95em;
+  color: var(--zen-colors-primary);
+}
+
+.bharat-memory-type {
+  font-size: 0.7em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--zen-colors-secondary);
+  margin-left: 8px;
+  opacity: 0.8;
+}
+
+.bharat-memory-content {
+  font-size: 0.85em;
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+/* Research specific styles */
+#bharat-research-input-box {
+  background: var(--zen-colors-tertiary);
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  border: 1px solid var(--zen-colors-border);
+}
+
+#bharat-research-input {
+  background: transparent !important;
+  border: none !important;
+  color: var(--zen-colors-primary);
+  font-size: 1.1em;
+}
+
+#bharat-research-status {
+  padding: 16px;
+  background: var(--zen-colors-tertiary);
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+#bharat-research-progress-container {
+  height: 4px;
+  background: var(--zen-colors-secondary);
+  border-radius: 2px;
+  margin: 12px 0;
+  overflow: hidden;
+}
+
+#bharat-research-progress-bar {
+  height: 100%;
+  background: var(--zen-colors-primary);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.bharat-research-task-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+  margin-bottom: 6px;
+  opacity: 0.7;
+}
+
+.bharat-research-task-item[status="completed"] {
+  opacity: 1;
+  color: var(--zen-colors-primary);
+}
+
+.bharat-research-task-item[status="running"] {
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* Arc-inspired styling */
+#bharat-ai-sidebar {
+  border-radius: var(--zen-native-inner-radius) 0 0 var(--zen-native-inner-radius);
+  margin: var(--zen-element-separation) 0;
+  box-shadow: var(--zen-big-shadow);
+  backdrop-filter: blur(10px);
+}
+
+:root[zen-dark-mode="true"] #bharat-ai-sidebar {
+  background: rgba(30, 30, 30, 0.85);
+}
+
+:root:not([zen-dark-mode="true"]) #bharat-ai-sidebar {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* PDF Intelligence Specific Styles */
+#bharat-ai-panel-pdf {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Workspace AI launcher panel uses feature-local CSS (bharat-workspace-launcher.css). */
+
+
+#bharat-pdf-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#bharat-pdf-header {
+  padding: 12px;
+  background: var(--zen-colors-tertiary);
+  border-radius: 12px;
+  border: 1px solid var(--zen-colors-border);
+  gap: 12px;
+}
+
+.pdf-icon {
+  width: 32px;
+  height: 32px;
+  background: url("chrome://browser/skin/zen-icons/document.svg") center/contain no-repeat;
+  filter: var(--zen-colors-primary-filter, none);
+}
+
+.bharat-pdf-title {
+  font-weight: 700;
+  font-size: 1.1em;
+  color: var(--zen-colors-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#bharat-pdf-context-badge {
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.green-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4CD964;
+  box-shadow: 0 0 8px #4CD964;
+}
+
+#bharat-pdf-status-box {
+  background: var(--zen-colors-tertiary);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--zen-colors-border);
+  gap: 8px;
+}
+
+#bharat-pdf-status-text {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+#bharat-pdf-progress-container {
+  height: 6px;
+  background: var(--zen-colors-secondary);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+#bharat-pdf-progress-bar {
+  height: 100%;
+  background: var(--zen-colors-primary);
+  width: 0%;
+  transition: width 0.2s ease;
+}
+
+#bharat-pdf-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bharat-pdf-action-btn {
+  background: var(--zen-colors-tertiary) !important;
+  border: 1px solid var(--zen-colors-border) !important;
+  color: var(--zen-colors-primary) !important;
+  border-radius: 12px !important;
+  padding: 10px 16px !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bharat-pdf-action-btn:hover {
+  background: var(--zen-colors-secondary) !important;
+  transform: translateY(-1px);
+}
+
+#bharat-pdf-save-actions {
+  padding-top: 8px;
+  border-top: 1px solid var(--zen-colors-border);
+}
+
+.bharat-pdf-save-btn {
+  background: var(--zen-main-browser-background) !important;
+  border: 1px solid var(--zen-colors-border) !important;
+  color: var(--zen-colors-primary) !important;
+  border-radius: 8px !important;
+  padding: 6px 12px !important;
+  font-size: 0.85em !important;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex: 1;
+}
+
+.bharat-pdf-save-btn:hover {
+  background: var(--zen-colors-tertiary) !important;
+}
+
+#bharat-pdf-ask-section {
+  margin-top: 8px;
+}
+
+#bharat-pdf-ask-box {
+  background: var(--zen-colors-tertiary);
+  border-radius: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--zen-colors-border);
+}
+
+#bharat-pdf-ask-input {
+  background: transparent !important;
+  border: none !important;
+  color: var(--zen-colors-primary);
+  font-size: 1em;
+  outline: none !important;
+}
+
+/* Agent Panel (Bharat AI Core) */
+.bharat-agent-title {
+  font-weight: 600;
+  font-size: 1.1em;
+  padding: 12px 16px 4px;
+  color: var(--zen-colors-primary);
+}
+
+.bharat-agent-subtitle {
+  font-size: 0.85em;
+  padding: 0 16px 12px;
+  color: var(--zen-colors-secondary);
+  opacity: 0.85;
+}
+
+#bharat-agent-input-box {
+  padding: 0 12px 12px;
+  gap: 8px;
+}
+
+#bharat-agent-progress-container {
+  height: 4px;
+  background: var(--zen-colors-tertiary);
+  border-radius: 2px;
+  margin: 0 16px 12px;
+  overflow: hidden;
+}
+
+#bharat-agent-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--zen-colors-primary);
+  transition: width 0.3s ease;
+}
+
+#bharat-agent-tasks-list {
+  padding: 0 16px;
+  gap: 6px;
+}
+
+.bharat-agent-task-item {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--zen-colors-tertiary);
+  font-size: 0.9em;
+  border-left: 3px solid var(--zen-colors-border);
+}
+
+.bharat-agent-task-item[status="running"] {
+  border-left-color: var(--zen-colors-primary);
+}
+
+.bharat-agent-task-item[status="completed"] {
+  border-left-color: #6BCB77;
+  opacity: 0.85;
+}
+
+.bharat-agent-task-item[status="failed"] {
+  border-left-color: #FF6B6B;
+}
+
+#bharat-agent-log {
+  padding: 12px 16px;
+  font-size: 0.85em;
+  color: var(--zen-colors-secondary);
+  white-space: pre-wrap;
+}
+
+/* Agent Task Queue */
+.bharat-agent-status-text {
+  padding: 0 16px 8px;
+  font-size: 0.85em;
+  color: var(--zen-colors-secondary);
+}
+
+.bharat-agent-section-title {
+  font-weight: 600;
+  font-size: 0.85em;
+  padding: 8px 16px 4px;
+  color: var(--zen-colors-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#bharat-agent-queue-section {
+  padding-bottom: 8px;
+}
+
+.bharat-agent-task-card {
+  padding: 8px 12px;
+  margin: 2px 16px;
+  border-radius: 8px;
+  background: var(--zen-colors-tertiary);
+  font-size: 0.85em;
+  border-left: 3px solid var(--zen-colors-border);
+}
+
+.bharat-agent-task-card[status="queued"] {
+  border-left-color: var(--zen-colors-border);
+  opacity: 0.7;
+}
+
+.bharat-agent-task-card[status="running"] {
+  border-left-color: var(--zen-colors-primary);
+}
+
+.bharat-agent-task-card[status="completed"] {
+  border-left-color: #6BCB77;
+  opacity: 0.8;
+}
+
+.bharat-agent-task-card[status="failed"] {
+  border-left-color: #FF6B6B;
+}
+
+.bharat-agent-task-goal {
+  font-weight: 500;
+  margin-bottom: 2px;
+  color: var(--zen-colors-primary);
+}
+
+.bharat-agent-task-meta {
+  font-size: 0.8em;
+  color: var(--zen-colors-secondary);
+  opacity: 0.8;
+}
+
+.bharat-agent-task-empty {
+  padding: 8px 16px;
+  font-size: 0.85em;
+  color: var(--zen-colors-secondary);
+  opacity: 0.6;
+  font-style: italic;
+}
+
+#bharat-agent-controls {
+  padding: 8px 16px;
+  border-top: 1px solid var(--zen-colors-border);
+  justify-content: flex-end;
+}
+
+#bharat-agent-clear-btn {
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.85em;
+}
+
+/* ==================== Workspace AI Panel ==================== */
+
+#bharat-workspace-ai-root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+#bharat-workspace-ai-hero {
+  border-radius: 18px;
+  padding: 20px 16px;
+  border: 1px solid var(--zen-colors-border);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(108, 99, 255, 0.28), transparent 45%),
+    radial-gradient(circle at 90% 10%, rgba(78, 205, 196, 0.18), transparent 40%),
+    var(--zen-colors-tertiary);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--zen-big-shadow);
+}
+
+#bharat-workspace-ai-title-label {
+  font-size: 1.5em;
+  font-weight: 800;
+  color: var(--zen-colors-primary);
+  margin-bottom: 4px;
+}
+
+#bharat-workspace-ai-subtitle-label {
+  font-size: 1em;
+  opacity: 0.85;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+#bharat-workspace-ai-description-label {
+  opacity: 0.7;
+  line-height: 1.5;
+  font-size: 0.9em;
+}
+
+#bharat-workspace-ai-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 520px) {
+  #bharat-workspace-ai-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bharat-workspace-ai-card {
+  position: relative;
+  border-radius: 16px;
+  padding: 14px 12px;
+  border: 1px solid var(--zen-colors-border);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  min-height: 82px;
+  overflow: hidden;
+}
+
+:root[zen-dark-mode="true"] .bharat-workspace-ai-card {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.bharat-workspace-ai-card::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: radial-gradient(circle at 20% 10%, rgba(108, 99, 255, 0.35), transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(78, 205, 196, 0.28), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.bharat-workspace-ai-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--zen-colors-primary);
+  background: rgba(255, 255, 255, 0.10);
+}
+
+:root[zen-dark-mode="true"] .bharat-workspace-ai-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.bharat-workspace-ai-card:hover::after {
+  opacity: 1;
+}
+
+.bharat-workspace-ai-card-title {
+  font-weight: 800;
+  color: var(--zen-colors-primary);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95em;
+}
+
+.bharat-workspace-ai-card-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--zen-colors-secondary);
+  color: var(--zen-main-browser-background);
+  font-weight: 900;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.bharat-workspace-ai-card-desc {
+  opacity: 0.7;
+  line-height: 1.4;
+  font-size: 0.85em;
+}
+
+/* Status Bar */
+#bharat-workspace-ai-status-bar {
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--zen-colors-border);
+  background: var(--zen-colors-tertiary);
+}
+
+#bharat-workspace-ai-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bharat-ws-status-dot-offline {
+  background: var(--zen-colors-secondary);
+  opacity: 0.5;
+}
+
+.bharat-ws-status-dot-online {
+  background: #6BCB77;
+  box-shadow: 0 0 12px rgba(107, 203, 119, 0.5);
+}
+
+#bharat-workspace-ai-status-value {
+  opacity: 0.8;
+  font-size: 0.9em;
+}
+
+/* Launch Button */
+.bharat-workspace-ai-action-btn {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--zen-colors-border);
+  background: linear-gradient(135deg, var(--zen-colors-secondary), color-mix(in srgb, var(--zen-colors-secondary) 70%, var(--zen-colors-primary)));
+  color: var(--zen-main-browser-background);
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.16s ease, filter 0.16s ease, border-color 0.16s ease;
+  text-align: center;
+  font-size: 1em;
+}
+
+.bharat-workspace-ai-action-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--zen-colors-primary);
+  filter: brightness(1.08);
+}
+
+.bharat-workspace-ai-action-btn:active {
+  transform: translateY(0);
+}

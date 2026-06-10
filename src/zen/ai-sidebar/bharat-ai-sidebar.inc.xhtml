@@ -1,0 +1,378 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<vbox id="bharat-ai-sidebar" hidden="true">
+  <hbox id="bharat-ai-header" align="center">
+    <label id="bharat-ai-title" data-l10n-id="bharat-ai-sidebar-title" />
+    <spacer flex="1" />
+    <toolbarbutton id="bharat-ai-close-button" class="close-icon"
+                   oncommand="gBharatAISidebar.toggle();" />
+  </hbox>
+  
+  <hbox id="bharat-ai-nav">
+    <toolbarbutton id="bharat-ai-nav-chat" class="bharat-ai-nav-item" 
+                   data-l10n-id="bharat-ai-nav-chat" oncommand="gBharatAISidebar.selectTab('chat');" />
+    <toolbarbutton id="bharat-ai-nav-search" class="bharat-ai-nav-item" 
+                   data-l10n-id="bharat-ai-nav-search" oncommand="gBharatAISidebar.selectTab('search');" />
+    <toolbarbutton id="bharat-ai-nav-research" class="bharat-ai-nav-item"
+                   data-l10n-id="bharat-ai-nav-research" oncommand="gBharatAISidebar.selectTab('research');" />
+    <toolbarbutton id="bharat-ai-nav-agent" class="bharat-ai-nav-item"
+                   data-l10n-id="bharat-ai-nav-agent" oncommand="gBharatAISidebar.selectTab('agent');" />
+    <toolbarbutton id="bharat-ai-nav-notes" class="bharat-ai-nav-item" 
+                   data-l10n-id="bharat-ai-nav-notes" oncommand="gBharatAISidebar.selectTab('notes');" />
+    <toolbarbutton id="bharat-ai-nav-voice" class="bharat-ai-nav-item" 
+                   data-l10n-id="bharat-ai-nav-voice" oncommand="gBharatAISidebar.selectTab('voice');" />
+    <toolbarbutton id="bharat-ai-nav-memory" class="bharat-ai-nav-item" 
+                   data-l10n-id="bharat-ai-nav-memory" oncommand="gBharatAISidebar.selectTab('memory');" />
+    <toolbarbutton id="bharat-ai-nav-workspace" class="bharat-ai-nav-item" 
+                   data-l10n-id="bharat-ai-nav-workspace" oncommand="gBharatAISidebar.selectTab('workspace');" />
+    <toolbarbutton id="bharat-ai-nav-workspace-ai" class="bharat-ai-nav-item" 
+                   data-l10n-id="bharat-workspace-ai" oncommand="gBharatAISidebar.selectTab('workspace-ai');" />
+    <toolbarbutton id="bharat-ai-nav-pdf" class="bharat-ai-nav-item" 
+                   data-l10n-id="bharat-ai-nav-pdf" oncommand="gBharatAISidebar.selectTab('pdf');" hidden="true" />
+  </hbox>
+
+  <vbox id="bharat-ai-content" flex="1">
+    <hbox id="bharat-ai-page-toolbar" align="center">
+      <toolbarbutton id="bharat-page-summarize-btn" class="bharat-ai-tool-btn" 
+                     data-l10n-id="bharat-page-summary" oncommand="gPageIntelligenceManager.summarizeCurrentPage();" />
+      <toolbarbutton id="bharat-page-explain-btn" class="bharat-ai-tool-btn" 
+                     data-l10n-id="bharat-page-explain" oncommand="gPageIntelligenceManager.explainSelection();" />
+      <toolbarbutton id="bharat-page-translate-btn" class="bharat-ai-tool-btn" 
+                     data-l10n-id="bharat-page-translate" oncommand="gBharatAISidebar.showTranslateMenu(this);" />
+    </hbox>
+    
+    <hbox id="bharat-ai-video-toolbar" align="center" hidden="true">
+      <toolbarbutton id="bharat-video-summary-btn" class="bharat-ai-tool-btn" 
+                     data-l10n-id="bharat-video-summary" oncommand="gYouTubeIntelligenceManager.summarizeVideo();" />
+      <toolbarbutton id="bharat-video-timeline-btn" class="bharat-ai-tool-btn" 
+                     data-l10n-id="bharat-video-timeline" oncommand="gYouTubeIntelligenceManager.generateTimeline();" />
+    </hbox>
+    <hbox id="bharat-ai-pdf-toolbar" align="center" hidden="true">
+      <toolbarbutton id="bharat-pdf-summarize-btn" class="bharat-ai-tool-btn" 
+                     data-l10n-id="bharat-pdf-summary" oncommand="gPDFIntelligenceManager.summarizePDF();" />
+      <toolbarbutton id="bharat-pdf-explain-btn" class="bharat-ai-tool-btn" 
+                     data-l10n-id="bharat-pdf-explain" oncommand="gPDFIntelligenceManager.explainPDF();" />
+      <toolbarbutton id="bharat-pdf-facts-btn" class="bharat-ai-tool-btn" 
+                     data-l10n-id="bharat-pdf-facts" oncommand="gPDFIntelligenceManager.extractKeyFacts();" />
+      <toolbarbutton id="bharat-pdf-timeline-btn" class="bharat-ai-tool-btn" 
+                     data-l10n-id="bharat-pdf-timeline" oncommand="gPDFIntelligenceManager.generateTimeline();" />
+    </hbox>
+    <deck id="bharat-ai-deck" flex="1">
+      <vbox id="bharat-ai-panel-chat" class="bharat-ai-panel" flex="1">
+        <hbox id="bharat-chat-layout" flex="1">
+          <vbox id="bharat-chat-sessions" hidden="true">
+            <toolbarbutton id="bharat-chat-new-button" data-l10n-id="bharat-chat-new-chat" 
+                           oncommand="gBharatAISidebar.createNewChat();" />
+            <vbox id="bharat-chat-session-list" flex="1" class="bharat-scrollable" />
+          </vbox>
+          
+          <vbox id="bharat-chat-window" flex="1">
+            <vbox id="bharat-chat-messages" flex="1" class="bharat-scrollable" />
+            
+            <vbox id="bharat-chat-input-container">
+              <hbox id="bharat-chat-typing-indicator" hidden="true" align="center">
+                <html:div class="typing-dot" />
+                <html:div class="typing-dot" />
+                <html:div class="typing-dot" />
+              </hbox>
+              <hbox id="bharat-chat-input-box" align="center">
+                <html:textarea id="bharat-chat-input" data-l10n-id="bharat-chat-input-placeholder"
+                               rows="1" onkeydown="gBharatAISidebar.handleChatKey(event);" />
+                <toolbarbutton id="bharat-chat-send-button" class="bharat-ai-icon-button"
+                               oncommand="gBharatAISidebar.sendChatMessage();" />
+              </hbox>
+            </vbox>
+          </vbox>
+        </hbox>
+      </vbox>
+      <vbox id="bharat-ai-panel-search" class="bharat-ai-panel" flex="1">
+        <vbox id="bharat-search-container" flex="1">
+          <hbox id="bharat-search-input-box" align="center">
+            <html:input id="bharat-search-input" placeholder="Ask anything..." flex="1"
+                        onkeydown="if(event.key === 'Enter') gBharatSearchManager.startSearch(this.value);" />
+          </hbox>
+          
+          <vbox id="bharat-search-results" flex="1">
+            <label class="bharat-search-section-title" data-l10n-id="bharat-search-sources-title" />
+            <hbox id="bharat-search-citations-content" class="bharat-search-scrollable-x"></hbox>
+            
+            <label class="bharat-search-section-title" data-l10n-id="bharat-search-answer-title" />
+            <vbox id="bharat-search-results-content" class="bharat-search-text-content"></vbox>
+            
+            <label class="bharat-search-section-title" data-l10n-id="bharat-search-related-title" />
+            <vbox id="bharat-search-related-content" class="bharat-search-related-list"></vbox>
+          </vbox>
+          
+          <hbox id="bharat-search-followup-box" align="center">
+            <html:input id="bharat-search-followup-input" data-l10n-id="bharat-search-followup-placeholder" flex="1" />
+          </hbox>
+        </vbox>
+      </vbox>
+      <vbox id="bharat-ai-panel-research" class="bharat-ai-panel" flex="1">
+        <vbox id="bharat-research-layout" flex="1">
+          <hbox id="bharat-research-input-box" align="center">
+            <html:input id="bharat-research-input" data-l10n-id="bharat-research-input-placeholder" flex="1"
+                        onkeydown="if(event.key === 'Enter') gBharatAISidebar.startResearch(this.value);" />
+          </hbox>
+          
+          <vbox id="bharat-research-content" flex="1" class="bharat-scrollable">
+            <vbox id="bharat-research-status" hidden="true">
+              <label id="bharat-research-state-label" />
+              <hbox id="bharat-research-progress-container">
+                <html:div id="bharat-research-progress-bar" />
+              </hbox>
+              <vbox id="bharat-research-tasks-list" />
+            </vbox>
+            
+            <vbox id="bharat-research-results-area" flex="1" />
+          </vbox>
+        </vbox>
+      </vbox>
+      <vbox id="bharat-ai-panel-agent" class="bharat-ai-panel" flex="1">
+        <vbox id="bharat-agent-layout" flex="1">
+          <label class="bharat-agent-title" data-l10n-id="bharat-agent-title" />
+          <label class="bharat-agent-subtitle" data-l10n-id="bharat-agent-subtitle" />
+          <label id="bharat-agent-status-label" class="bharat-agent-status-text" data-l10n-id="bharat-agent-status-idle" />
+          <hbox id="bharat-agent-input-box" align="center">
+            <html:input id="bharat-agent-input" data-l10n-id="bharat-agent-input-placeholder" flex="1"
+                        onkeydown="if(event.key === 'Enter') gBharatAISidebar.startAgentTask(this.value);" />
+            <toolbarbutton id="bharat-agent-start-btn" data-l10n-id="bharat-agent-start"
+                           oncommand="gBharatAISidebar.startAgentTask(document.getElementById('bharat-agent-input').value);" />
+            <toolbarbutton id="bharat-agent-cancel-btn" data-l10n-id="bharat-agent-cancel"
+                           oncommand="gBharatAgentExecutor.cancel();" />
+          </hbox>
+          <vbox id="bharat-agent-queue-section" flex="1" class="bharat-scrollable">
+            <label class="bharat-agent-section-title" data-l10n-id="bharat-agent-task-queue" />
+            <vbox id="bharat-agent-task-queue-list" />
+            <label class="bharat-agent-section-title" data-l10n-id="bharat-agent-task-running" />
+            <vbox id="bharat-agent-running-tasks-list" />
+            <label class="bharat-agent-section-title" data-l10n-id="bharat-agent-task-completed" />
+            <vbox id="bharat-agent-completed-tasks-list" />
+            <label class="bharat-agent-section-title" data-l10n-id="bharat-agent-task-failed" />
+            <vbox id="bharat-agent-failed-tasks-list" />
+          </vbox>
+          <vbox id="bharat-agent-current-status">
+            <hbox id="bharat-agent-progress-container">
+              <html:div id="bharat-agent-progress-bar" />
+            </hbox>
+            <vbox id="bharat-agent-tasks-list" />
+            <vbox id="bharat-agent-log" flex="1" />
+          </vbox>
+          <hbox id="bharat-agent-controls">
+            <toolbarbutton id="bharat-agent-clear-btn" data-l10n-id="bharat-agent-task-clear"
+                           oncommand="gBharatAISidebar.clearAgentTasks();" />
+          </hbox>
+        </vbox>
+      </vbox>
+      <vbox id="bharat-ai-panel-notes" class="bharat-ai-panel" flex="1">
+        <hbox id="bharat-notes-layout" flex="1">
+          <vbox id="bharat-notes-sidebar" width="180">
+            <hbox id="bharat-notes-actions" align="center">
+              <toolbarbutton id="bharat-notes-new-btn" data-l10n-id="bharat-new-note" 
+                             oncommand="gBharatAISidebar.createNewNote();" />
+              <spacer flex="1" />
+              <toolbarbutton id="bharat-notes-search-btn" class="bharat-ai-icon-button" />
+            </hbox>
+            <vbox id="bharat-notes-list" flex="1" class="bharat-scrollable" />
+          </vbox>
+          
+          <vbox id="bharat-notes-editor-container" flex="1">
+            <hbox id="bharat-notes-editor-header" align="center">
+              <html:input id="bharat-note-title-input" placeholder="Note Title" flex="1" />
+              <toolbarbutton id="bharat-note-ai-summarize" class="bharat-ai-tool-btn" 
+                             data-l10n-id="bharat-note-summary" oncommand="gBharatNotesManager.summarizeNote();" />
+            </hbox>
+            <html:textarea id="bharat-note-editor" flex="1" placeholder="Write your thoughts..." 
+                           oninput="gBharatAISidebar.handleNoteInput();" />
+          </vbox>
+        </hbox>
+      </vbox>
+      <vbox id="bharat-ai-panel-voice" class="bharat-ai-panel" flex="1">
+        <vbox id="bharat-voice-container" flex="1" align="center">
+          <hbox id="bharat-voice-header" align="center">
+            <label id="bharat-voice-title" data-l10n-id="voice-title" />
+            <spacer flex="1" />
+            <toolbarbutton id="bharat-voice-settings-btn" class="bharat-ai-icon-button"
+                           oncommand="gBharatAISidebar.toggleVoiceSettings();" />
+          </hbox>
+          
+          <vbox id="bharat-voice-settings-panel" hidden="true">
+            <hbox align="center">
+              <label data-l10n-id="voice-setting-wakeword" />
+              <spacer flex="1" />
+              <checkbox id="bharat-voice-wakeword-check" 
+                        oncommand="gBharatAISidebar.updateVoicePref('wakeword', this.checked);" />
+            </hbox>
+            <hbox align="center">
+              <label data-l10n-id="voice-setting-tts" />
+              <spacer flex="1" />
+              <checkbox id="bharat-voice-tts-check" 
+                        oncommand="gBharatAISidebar.updateVoicePref('tts.enabled', this.checked);" />
+            </hbox>
+            <vbox class="voice-slider-container">
+              <label data-l10n-id="voice-setting-speed" />
+              <html:input type="range" min="0.5" max="2" step="0.1" value="1" 
+                          oninput="gBharatAISidebar.updateVoicePref('speed', this.value);" />
+            </vbox>
+          </vbox>
+          
+          <spacer flex="1" />
+          
+          <vbox id="bharat-voice-orb-container" align="center" pack="center">
+            <html:div id="bharat-voice-orb" onclick="gVoiceManager.toggleListening();">
+              <html:div class="orb-wave" />
+              <html:div class="orb-wave" />
+              <html:div class="orb-wave" />
+              <html:div id="bharat-voice-orb-inner">
+                <html:div id="bharat-voice-orb-icon" />
+              </html:div>
+            </html:div>
+            <toolbarbutton id="bharat-voice-toggle-btn" data-l10n-id="voice-start"
+                           oncommand="gVoiceManager.toggleListening();" />
+          </vbox>
+          
+          <hbox id="bharat-voice-status-box" align="center">
+            <label id="bharat-voice-status-label" data-l10n-id="voice-status-idle" />
+            <html:div id="bharat-voice-status-indicator" />
+          </hbox>
+          
+          <spacer flex="1" />
+          
+          <vbox id="bharat-voice-info" align="stretch">
+            <label class="bharat-voice-info-header" data-l10n-id="voice-transcript" />
+            <vbox id="bharat-voice-transcript-area">
+              <html:div id="bharat-voice-transcript-text" />
+            </vbox>
+            
+            <label class="bharat-voice-info-header" data-l10n-id="voice-command" />
+            <hbox id="bharat-voice-last-command">
+              <html:div id="bharat-voice-command-text" />
+            </hbox>
+          </vbox>
+        </vbox>
+      </vbox>
+      <vbox id="bharat-ai-panel-memory" class="bharat-ai-panel" flex="1">
+        <vbox id="bharat-memory-layout" flex="1">
+          <hbox id="bharat-memory-header" align="center">
+            <html:input id="bharat-memory-search" data-l10n-id="bharat-memory-search" flex="1" 
+                        oninput="gBharatAISidebar.refreshMemoryList();" />
+          </hbox>
+          <vbox id="bharat-memory-list" flex="1" class="bharat-scrollable" />
+        </vbox>
+      </vbox>
+      <vbox id="bharat-ai-panel-workspace" class="bharat-ai-panel" flex="1">
+        <vbox id="bharat-workspace-panel" flex="1">
+          <hbox id="bharat-workspace-header">
+            <label id="bharat-workspace-title" data-l10n-id="bharat-ai-nav-workspace" />
+            <spacer flex="1" />
+            <toolbarbutton id="bharat-workspace-add-btn" data-l10n-id="bharat-workspace-new"
+                           oncommand="gBharatAISidebar.showCreateWorkspaceModal();" />
+          </hbox>
+          <vbox id="bharat-workspace-list" flex="1" class="bharat-scrollable" />
+        </vbox>
+      </vbox>
+
+      <vbox id="bharat-ai-panel-workspace-ai" class="bharat-ai-panel" flex="1">
+        <vbox id="bharat-workspace-ai-root">
+          <vbox id="bharat-workspace-ai-hero">
+            <label id="bharat-workspace-ai-title-label" data-l10n-id="bharat-workspace-ai-title" />
+            <label id="bharat-workspace-ai-subtitle-label" data-l10n-id="bharat-workspace-ai-subtitle" />
+            <label id="bharat-workspace-ai-description-label" data-l10n-id="bharat-workspace-ai-description" />
+          </vbox>
+
+          <vbox id="bharat-workspace-ai-cards-grid">
+            <vbox class="bharat-workspace-ai-card">
+              <label class="bharat-workspace-ai-card-title"><span class="bharat-workspace-ai-card-icon bharat-ws-icon-projects"></span><span data-l10n-id="bharat-workspace-ai-projects" /></label>
+              <label class="bharat-workspace-ai-card-desc" value="Manage projects, ideas, and workflows in your workspace." />
+            </vbox>
+            <vbox class="bharat-workspace-ai-card">
+              <label class="bharat-workspace-ai-card-title"><span class="bharat-workspace-ai-card-icon bharat-ws-icon-research"></span><span data-l10n-id="bharat-workspace-ai-research" /></label>
+              <label class="bharat-workspace-ai-card-desc" value="AI-powered deep research with multi-source analysis." />
+            </vbox>
+            <vbox class="bharat-workspace-ai-card">
+              <label class="bharat-workspace-ai-card-title"><span class="bharat-workspace-ai-card-icon bharat-ws-icon-knowledge"></span><span data-l10n-id="bharat-workspace-ai-knowledge" /></label>
+              <label class="bharat-workspace-ai-card-desc" value="Build a persistent knowledge base from your browser activity." />
+            </vbox>
+            <vbox class="bharat-workspace-ai-card">
+              <label class="bharat-workspace-ai-card-title"><span class="bharat-workspace-ai-card-icon bharat-ws-icon-notes"></span><span data-l10n-id="bharat-workspace-ai-notes" /></label>
+              <label class="bharat-workspace-ai-card-desc" value="Smart notes with automatic organization and AI enhancement." />
+            </vbox>
+            <vbox class="bharat-workspace-ai-card">
+              <label class="bharat-workspace-ai-card-title"><span class="bharat-workspace-ai-card-icon bharat-ws-icon-tasks"></span><span data-l10n-id="bharat-workspace-ai-tasks" /></label>
+              <label class="bharat-workspace-ai-card-desc" value="Track and manage tasks across all your projects." />
+            </vbox>
+            <vbox class="bharat-workspace-ai-card">
+              <label class="bharat-workspace-ai-card-title"><span class="bharat-workspace-ai-card-icon bharat-ws-icon-productivity"></span><span data-l10n-id="bharat-workspace-ai-productivity" /></label>
+              <label class="bharat-workspace-ai-card-desc" value="Boost productivity with AI-powered browser workflows." />
+            </vbox>
+            <vbox class="bharat-workspace-ai-card">
+              <label class="bharat-workspace-ai-card-title"><span class="bharat-workspace-ai-card-icon bharat-ws-icon-organization"></span><span data-l10n-id="bharat-workspace-ai-organization" /></label>
+              <label class="bharat-workspace-ai-card-desc" value="Organize workspaces, spaces, and tabs intelligently." />
+            </vbox>
+            <vbox class="bharat-workspace-ai-card">
+              <label class="bharat-workspace-ai-card-title"><span class="bharat-workspace-ai-card-icon bharat-ws-icon-agent"></span><span data-l10n-id="bharat-workspace-ai-agent" /></label>
+              <label class="bharat-workspace-ai-card-desc" value="Future integration with Bharat Browser Agent system." />
+            </vbox>
+          </vbox>
+
+          <hbox id="bharat-workspace-ai-status-bar" align="center">
+            <html:div id="bharat-workspace-ai-status-dot" class="bharat-ws-status-dot-offline" />
+            <label id="bharat-workspace-ai-status-value" data-l10n-id="bharat-workspace-ai-not-running" />
+          </hbox>
+
+          <button id="bharat-workspace-ai-launch-btn" class="bharat-workspace-ai-action-btn"
+                  data-l10n-id="bharat-workspace-ai-launch"
+                  oncommand="gBharatAISidebar.initializeWorkspaceAI();" />
+        </vbox>
+      </vbox>
+
+      <vbox id="bharat-ai-panel-pdf" class="bharat-ai-panel" flex="1">
+        <vbox id="bharat-pdf-container" flex="1" class="bharat-scrollable">
+          <hbox id="bharat-pdf-header" align="center">
+            <html:div id="bharat-pdf-icon" class="pdf-icon" />
+            <vbox flex="1">
+              <label id="bharat-pdf-title-label" class="bharat-pdf-title" value="No PDF Active" />
+              <hbox id="bharat-pdf-context-badge" align="center" hidden="true">
+                <html:div class="green-dot" />
+                <label value="PDF Context Active" />
+              </hbox>
+            </vbox>
+          </hbox>
+          
+          <vbox id="bharat-pdf-status-box" hidden="true">
+            <label id="bharat-pdf-status-text" value="Extracting text..." />
+            <hbox id="bharat-pdf-progress-container">
+              <html:div id="bharat-pdf-progress-bar" />
+            </hbox>
+          </vbox>
+          
+          <vbox id="bharat-pdf-actions" gap="8">
+            <button class="bharat-pdf-action-btn" data-l10n-id="bharat-pdf-summary" oncommand="gPDFIntelligenceManager.summarizePDF();" />
+            <hbox gap="8">
+              <button class="bharat-pdf-action-btn" flex="1" data-l10n-id="bharat-pdf-explain-beginner" oncommand="gPDFIntelligenceManager.explainPDF('beginner');" />
+              <button class="bharat-pdf-action-btn" flex="1" data-l10n-id="bharat-pdf-explain-technical" oncommand="gPDFIntelligenceManager.explainPDF('technical');" />
+            </hbox>
+            <button class="bharat-pdf-action-btn" data-l10n-id="bharat-pdf-facts" oncommand="gPDFIntelligenceManager.extractKeyFacts();" />
+            <button class="bharat-pdf-action-btn" data-l10n-id="bharat-pdf-timeline" oncommand="gPDFIntelligenceManager.generateTimeline();" />
+          </vbox>
+          
+          <hbox id="bharat-pdf-save-actions" align="center" gap="8">
+            <button class="bharat-pdf-save-btn" data-l10n-id="bharat-pdf-save-summary" oncommand="gPDFIntelligenceManager.saveResultToNotes('summary');" />
+            <button class="bharat-pdf-save-btn" data-l10n-id="bharat-pdf-save-facts" oncommand="gPDFIntelligenceManager.saveResultToNotes('fact');" />
+            <button class="bharat-pdf-save-btn" data-l10n-id="bharat-pdf-save-analysis" oncommand="gPDFIntelligenceManager.saveResultToNotes('analysis');" />
+          </hbox>
+          
+          <vbox id="bharat-pdf-ask-section">
+            <label value="Ask PDF" class="section-title" />
+            <hbox id="bharat-pdf-ask-box" align="center">
+              <html:input id="bharat-pdf-ask-input" placeholder="Ask about this document..." flex="1"
+                          onkeydown="if(event.key === 'Enter') gPDFIntelligenceManager.askPDF(this.value);" />
+            </hbox>
+          </vbox>
+        </vbox>
+      </vbox>
+    </deck>
+  </vbox>
+</vbox>

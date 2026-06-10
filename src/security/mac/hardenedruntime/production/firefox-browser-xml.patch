@@ -1,0 +1,13 @@
+diff --git a/security/mac/hardenedruntime/production/firefox.browser.xml b/security/mac/hardenedruntime/production/firefox.browser.xml
+index b7b74dd2bdfee3c724c4361e98c8addaf6148465..ad1da805bc76df1ea7f8504305e0deccd9ed3f65 100644
+--- a/security/mac/hardenedruntime/production/firefox.browser.xml
++++ b/security/mac/hardenedruntime/production/firefox.browser.xml
+@@ -29,7 +29,7 @@
+ 
+     <!-- Required for com.apple.developer.web-browser.public-key-credential -->
+     <key>com.apple.application-identifier</key>
+-    <string>43AQ936H96.org.mozilla.firefox</string>
++    <string>9V5K9TP787.app.zen-browser.zen</string>
+ 
+     <!-- For platform passkey (webauthn) support -->
+     <key>com.apple.developer.web-browser.public-key-credential</key><true/>

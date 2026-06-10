@@ -1,0 +1,228 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#bharat-ai-panel-workspace-ai {
+  padding: 18px;
+  text-align: left;
+  overflow: hidden;
+}
+
+#bharat-ai-workspace-ai-root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+
+#bharat-ai-hero {
+  border-radius: 18px;
+  padding: 16px;
+  border: 1px solid var(--zen-colors-border);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(108, 99, 255, 0.28), transparent 45%),
+    radial-gradient(circle at 90% 10%, rgba(78, 205, 196, 0.18), transparent 40%),
+    var(--zen-colors-tertiary);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--zen-big-shadow);
+}
+
+#bharat-ai-hero-title {
+  font-size: 1.6em;
+  font-weight: 800;
+  color: var(--zen-colors-primary);
+  margin-bottom: 6px;
+}
+
+#bharat-ai-hero-subtitle {
+  font-size: 1.05em;
+  opacity: 0.85;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+#bharat-ai-hero-description {
+  opacity: 0.7;
+  line-height: 1.5;
+}
+
+#bharat-ai-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 520px) {
+  #bharat-ai-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bharat-ai-feature-card {
+  position: relative;
+  border-radius: 16px;
+  padding: 14px 12px;
+  border: 1px solid var(--zen-colors-border);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  transition: transform 0.18s ease, background 0.18s ease,
+    border-color 0.18s ease;
+  min-height: 92px;
+  overflow: hidden;
+}
+
+:root[zen-dark-mode="true"] #bharat-ai-panel-workspace-ai .bharat-ai-feature-card {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.bharat-ai-feature-card::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: radial-gradient(circle at 20% 10%, rgba(108, 99, 255, 0.35), transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(78, 205, 196, 0.28), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.bharat-ai-feature-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--zen-colors-primary);
+  background: rgba(255, 255, 255, 0.10);
+}
+
+:root[zen-dark-mode="true"] #bharat-ai-panel-workspace-ai .bharat-ai-feature-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.bharat-ai-feature-card:hover::after {
+  opacity: 1;
+}
+
+.bharat-ai-feature-title {
+  font-weight: 800;
+  color: var(--zen-colors-primary);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bharat-ai-feature-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--zen-colors-secondary);
+  color: var(--zen-main-browser-background);
+  font-weight: 900;
+}
+
+.bharat-ai-feature-desc {
+  opacity: 0.7;
+  line-height: 1.4;
+  font-size: 0.95em;
+}
+
+#bharat-ai-cards-row2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+#bharat-ai-status-and-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 520px) {
+  #bharat-ai-status-and-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bharat-ai-info-card {
+  border-radius: 16px;
+  border: 1px solid var(--zen-colors-border);
+  background: var(--zen-colors-tertiary);
+  padding: 14px;
+  backdrop-filter: blur(12px);
+}
+
+.bharat-ai-info-title {
+  font-weight: 900;
+  margin-bottom: 10px;
+  color: var(--zen-colors-primary);
+}
+
+.bharat-ai-status-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+  opacity: 0.85;
+}
+
+.bharat-ai-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--zen-colors-secondary);
+  box-shadow: 0 0 10px rgba(108, 99, 255, 0.25);
+  flex-shrink: 0;
+}
+
+.bharat-ai-stat-value {
+  font-weight: 900;
+  font-size: 1.2em;
+  color: var(--zen-colors-primary);
+}
+
+.bharat-ai-stat-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+  opacity: 0.85;
+}
+
+#bharat-ai-actions {
+  display: flex;
+  gap: 12px;
+}
+
+@media (max-width: 520px) {
+  #bharat-ai-actions {
+    flex-direction: column;
+  }
+}
+
+.bharat-premium-btn {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid var(--zen-colors-border);
+  background: linear-gradient(135deg, var(--zen-colors-secondary), var(--zen-colors-tertiary));
+  color: var(--zen-main-browser-background);
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 0.16s ease, filter 0.16s ease,
+    border-color 0.16s ease;
+  text-align: center;
+}
+
+.bharat-premium-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--zen-colors-primary);
+  filter: brightness(1.05);
+}
+
+.bharat-premium-btn:active {
+  transform: translateY(0);
+}
+
