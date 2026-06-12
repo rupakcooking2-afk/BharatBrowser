@@ -1,53 +1,46 @@
 name: Build Bharat Browser
 
 on:
-workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
-build:
-runs-on: ubuntu-22.04
+  build:
+    runs-on: ubuntu-22.04
 
-```
-steps:
-  - name: Checkout
-    uses: actions/checkout@v4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
-  - name: Setup Node
-    uses: actions/setup-node@v4
-    with:
-      node-version: 22
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
 
-  - name: Install Dependencies
-    run: npm ci
+      - name: Install Dependencies
+        run: npm ci
 
-  - name: Download Firefox Source
-    run: npm run download
+      - name: Download Firefox Source
+        run: npm run download
 
-  - name: Sync Firefox Version
-    run: npm run sync
+      - name: Import Bharat Changes
+        run: npm run import
 
-  - name: Import Bharat Changes
-    run: npm run import
+      - name: Bootstrap Build Environment
+        run: ./mach bootstrap --application-choice browser
 
-  - name: Bootstrap
-    run: npm run bootstrap
+      - name: Build Browser
+        run: ./mach build
 
-  - name: Build Browser
-    run: |
-      cd engine
-      ./mach build
+      - name: Package Browser
+        run: ./mach package
 
-  - name: Package Browser
-    run: |
-      cd engine
-      ./mach package
-
-  - name: Upload Artifact
-    uses: actions/upload-artifact@v4
-    with:
-      name: bharat-browser
-      path: |
-        engine/obj-*/dist/**/*.zip
-        engine/obj-*/dist/**/*.tar.*
-        engine/obj-*/dist/**/*.deb
-```
+      - name: Upload Browser Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: bharat-browser-linux
+          path: |
+            obj-*/dist/**/*.tar.*
+            obj-*/dist/**/*.zip
+            obj-*/dist/**/*.deb
