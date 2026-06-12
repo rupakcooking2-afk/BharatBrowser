@@ -1,5 +1,4 @@
 diff --git a/browser/base/content/aboutDialog.xhtml b/browser/base/content/aboutDialog.xhtml
-index c64980810570fcea84e33fdc2d66ac42a79f4e46..aa629ebb38a9aa74048fe3fc759f716fad57d6f3 100644
 --- a/browser/base/content/aboutDialog.xhtml
 +++ b/browser/base/content/aboutDialog.xhtml
 @@ -102,10 +102,6 @@
@@ -13,7 +12,7 @@ index c64980810570fcea84e33fdc2d66ac42a79f4e46..aa629ebb38a9aa74048fe3fc759f716f
              </vbox>
  #endif
            </hbox>
-@@ -120,22 +116,28 @@
+@@ -120,26 +116,32 @@
            <vbox id="experimental" hidden="true">
              <description class="text-blurb" id="warningDesc" data-l10n-id="warningDesc-version"></description>
              <description class="text-blurb" id="communityExperimentalDesc" data-l10n-id="community-exp">
@@ -27,6 +26,10 @@ index c64980810570fcea84e33fdc2d66ac42a79f4e46..aa629ebb38a9aa74048fe3fc759f716f
 +            <label is="text-link" href="https://github.com/zen-browser/desktop" data-l10n-name="community-mozillaLink"/>
              <label is="text-link" useoriginprincipal="true" href="about:credits" data-l10n-name="community-creditsLink"/>
            </description>
+          <description class="text-blurb" id="contributeDesc" data-l10n-id="helpus">
+            <label is="text-link" href="https://foundation.mozilla.org/?form=firefox-about" data-l10n-name="helpus-donateLink"/>
+            <label is="text-link" href="https://www.mozilla.org/contribute/?utm_source=firefox-browser&#38;utm_medium=firefox-desktop&#38;utm_campaign=about-dialog" data-l10n-name="helpus-getInvolvedLink"/>
+          </description>
 +          <description class="text-blurb" id="bharatDescription">
 +            A modern AI-powered browser built on Zen Browser and Firefox technologies.
 +          </description>
