@@ -11,10 +11,11 @@ index b4abfb868fc7c13e789acb57b44e386de6d31bf0..ad917f5362ed4f3ba0149c214fb53d3f
    <script src="chrome://browser/content/navigator-toolbox.js" />
  
    <!-- Menu -->
-@@ -18,9 +18,13 @@
+@@ -18,10 +18,14 @@
  #include browser-menubar.inc.xhtml
      </toolbaritem>
      <spacer flex="1" skipintoolbarset="true" style="order: 1000;"/>
+ 
 -#include titlebar-items.inc.xhtml
    </toolbar>
  
@@ -43,7 +44,7 @@ index b4abfb868fc7c13e789acb57b44e386de6d31bf0..ad917f5362ed4f3ba0149c214fb53d3f
          </tabs>
  
          <toolbarbutton id="new-tab-button"
-@@ -115,9 +122,10 @@
+@@ -115,10 +122,14 @@
  
      <toolbarbutton class="content-analysis-indicator toolbarbutton-1 content-analysis-indicator-icon"/>
  
