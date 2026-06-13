@@ -28,13 +28,19 @@ jobs:
         run: npm run import
 
       - name: Bootstrap Build Environment
-        run: ./mach bootstrap --application-choice browser
+        run: |
+          cd engine
+          ./mach bootstrap --application-choice browser
 
       - name: Build Browser
-        run: ./mach build
+        run: |
+          cd engine
+          ./mach build
 
       - name: Package Browser
-        run: ./mach package
+        run: |
+          cd engine
+          ./mach package
 
       - name: Upload Browser Artifact
         uses: actions/upload-artifact@v4
