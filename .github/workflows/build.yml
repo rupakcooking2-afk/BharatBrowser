@@ -47,6 +47,8 @@ jobs:
           ./mach --no-interactive bootstrap --application-choice browser
 
       - name: Build Browser
+        env:
+          PYTHONUNBUFFERED: 1
         run: |
           cd engine
           ./mach build -j1
