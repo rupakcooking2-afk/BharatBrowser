@@ -18,11 +18,25 @@ jobs:
         with:
           node-version: 22
 
+      - name: Setup Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Install Dependencies
         run: npm ci
 
       - name: Download Firefox Source
         run: npm run download
+
+      - name: Verify engine repository
+        run: |
+          cd engine
+          pwd
+          git status
+          git branch -a
+          git rev-parse HEAD
+          git log -1 --oneline
 
       - name: Import Bharat Changes
         run: npm run import
@@ -30,7 +44,7 @@ jobs:
       - name: Bootstrap Build Environment
         run: |
           cd engine
-          ./mach bootstrap --application-choice browser
+          ./mach --no-interactive bootstrap --application-choice browser
 
       - name: Build Browser
         run: |
